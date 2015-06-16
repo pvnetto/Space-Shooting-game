@@ -66,8 +66,9 @@ void Enemy::follow_player(vector <Enemy> &MyEnemies){
   float enemy_distance = sqrt(pow(user->pos_x - enemy_pos_x, 2)
       + pow(user->pos_y - enemy_pos_y, 2));
 
-  if (enemy_distance < radius + user->radius){
+  if (enemy_live && enemy_distance < radius + user->radius){
     enemy_live = false;
+    user->remove_life();
     return;
   }
 

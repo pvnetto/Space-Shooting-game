@@ -24,6 +24,9 @@ int main(int argc, char *argv[]) {
   ALLEGRO_TIMER *timer = al_create_timer(1 / fps);
   ALLEGRO_BITMAP *background = NULL;
   ALLEGRO_BITMAP *menu = NULL;
+  ALLEGRO_FONT *font30 = al_load_font("fonts/Halo3.ttf", 30, 0);
+  ALLEGRO_FONT *font40 = al_load_font("fonts/Halo3.ttf", 40, 0);
+  ALLEGRO_COLOR yellow = al_map_rgb(230, 230, 20);
 
   Character *player = new Character;
   vector <Bullets> MyBullets;
@@ -51,7 +54,7 @@ int main(int argc, char *argv[]) {
       break;
     }
 
-    if(menu_shown){
+    if(menu_shown && player->alive){
       if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
         cout << "KEYDOWN: " << event.keyboard.keycode << endl;
         switch (event.keyboard.keycode) {
@@ -133,6 +136,7 @@ int main(int argc, char *argv[]) {
         al_draw_bitmap(background, 0, 0, 0);
 
         player->draw_character();
+        al_draw_textf(font30, yellow, WIDTH / 2, 0, ALLEGRO_ALIGN_CENTER, "Vida: %d", player->lives);
 
         for (unsigned int a = 0; a < MyEnemies.size(); a++){
           MyEnemies[a].draw_enemy();
@@ -144,7 +148,9 @@ int main(int argc, char *argv[]) {
 
       }
 
-    }else{
+    }else if(!player->alive){
+      al_draw_textf(font40, yellow, WIDTH / 2, HEIGHT / 2, ALLEGRO_ALIGN_CENTER, "GAME OVER");
+    }else
       al_draw_bitmap(menu, 0, 0, 0);
       if (event.type == ALLEGRO_EVENT_KEY_DOWN && event.keyboard.keycode == ALLEGRO_KEY_ENTER){
         menu_shown = true;
