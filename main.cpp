@@ -27,6 +27,7 @@ int main(int argc, char *argv[]) {
   ALLEGRO_FONT *font30 = al_load_font("fonts/Halo3.ttf", 30, 0);
   ALLEGRO_FONT *font40 = al_load_font("fonts/Halo3.ttf", 40, 0);
   ALLEGRO_COLOR yellow = al_map_rgb(230, 230, 20);
+  ALLEGRO_SAMPLE *bg_music = al_load_sample("sounds/bg_music.wav");
 
   Character *player = new Character;
   vector <Bullets> MyBullets;
@@ -42,6 +43,9 @@ int main(int argc, char *argv[]) {
   al_register_event_source(event_queue, al_get_mouse_event_source());
   al_register_event_source(event_queue, al_get_display_event_source(display));
   al_start_timer(timer);
+
+  // Playing music
+  al_play_sample(bg_music, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_LOOP,NULL);
 
   //Inicializando loop do jogo
 
@@ -167,7 +171,6 @@ int main(int argc, char *argv[]) {
       al_clear_to_color(al_map_rgb(0,0,0));
       redraw = false;
     }
-
 
   }
   return 0;

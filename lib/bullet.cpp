@@ -10,6 +10,7 @@ Bullets::Bullets(Character *player){
   radius = 10;
   bullet_live = false;
   shot = al_load_bitmap("img/bullet.png");
+  sound = al_load_sample("sounds/shoot_sound.wav");
 }
 
 void Bullets::fire_bullet(int mouse_x, int mouse_y, float player_x, float player_y){
@@ -18,6 +19,7 @@ void Bullets::fire_bullet(int mouse_x, int mouse_y, float player_x, float player
   bullet_speed_y = 10*sin(bullet_angle);
   bullet_x = player_x + bullet_speed_x;
   bullet_y = player_y + bullet_speed_y;
+  al_play_sample(sound, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_ONCE,NULL);
   bullet_live = true;
 }
 

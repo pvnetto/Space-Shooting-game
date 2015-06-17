@@ -16,6 +16,7 @@ class Bullets{
     int radius;
     bool bullet_live;
     ALLEGRO_BITMAP *shot;
+    ALLEGRO_SAMPLE *sound;
     Character *player;
 
     Bullets(Character *player);
