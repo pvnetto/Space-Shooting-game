@@ -16,8 +16,9 @@ class Bullets{
     int radius;
     bool bullet_live;
     ALLEGRO_BITMAP *shot;
+    Character *player;
 
-    Bullets();
+    Bullets(Character *player);
     void fire_bullet(int, int, float, float);
     bool bullet_trajectory(vector <Enemy> &);
     void draw_bullet();

@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
 
       //Atira
       if(event.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN){
-        Bullets *aux = new Bullets;
+        Bullets *aux = new Bullets(player);
         aux->fire_bullet(event.mouse.x, event.mouse.y, player->pos_x, player->pos_y);
         MyBullets.push_back(*aux);
       }
@@ -136,7 +136,8 @@ int main(int argc, char *argv[]) {
         al_draw_bitmap(background, 0, 0, 0);
 
         player->draw_character();
-        al_draw_textf(font30, yellow, WIDTH / 2, 0, 0, "Vida: %d", player->lives);
+        al_draw_textf(font30, yellow, WIDTH / 2, 0, 0, "Vidas: %d", player->lives);
+        al_draw_textf(font30, yellow, WIDTH / 2, 30, 0, "Score: %d", player->score);
 
         for (unsigned int a = 0; a < MyEnemies.size(); a++){
           MyEnemies[a].draw_enemy();

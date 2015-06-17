@@ -1,6 +1,7 @@
 #include "bullet.h"
 
-Bullets::Bullets(){
+Bullets::Bullets(Character *player){
+  this->player = player;
   bullet_x = 0;
   bullet_y = 0;
   bullet_speed_x = 0;
@@ -36,6 +37,7 @@ bool Bullets::bullet_trajectory(vector <Enemy> &MyEnemies){
       bullet_live = false;
       MyEnemies[i].enemy_live = false;
       MyEnemies.erase(MyEnemies.begin() + i);
+      player->score++;
       return false;
     }
   }

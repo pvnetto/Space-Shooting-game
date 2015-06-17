@@ -13,6 +13,7 @@ Character::Character(){
   sprite = al_load_bitmap("img/player.png");
   lives = 10;
   alive = true;
+  score = 0;
 }
 
 void Character::set_character_speed(float x, float y){

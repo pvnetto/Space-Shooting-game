@@ -15,6 +15,7 @@ class Character{
     float max_speed_neg;
     int radius;
     int lives;
+    int score;
     bool alive;
     ALLEGRO_BITMAP *sprite;
 
