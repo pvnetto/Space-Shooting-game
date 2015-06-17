@@ -1,5 +1,5 @@
 game: dist/main.o dist/engine.o dist/character.o dist/bullet.o dist/enemy.o
-	g++ $^ -o game -lallegro -lallegro_primitives -lallegro_image
+	g++ $^ -o game -lallegro -lallegro_primitives -lallegro_image -lallegro_font -lallegro_ttf -lallegro_audio -lallegro_acodec
 
 dist/main.o: main.cpp
 	g++ -c main.cpp -o dist/main.o

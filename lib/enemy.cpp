@@ -66,22 +66,12 @@ void Enemy::follow_player(vector <Enemy> &MyEnemies){
   float enemy_distance = sqrt(pow(user->pos_x - enemy_pos_x, 2)
       + pow(user->pos_y - enemy_pos_y, 2));
 
-  if (enemy_distance < radius + user->radius){
+  if (enemy_live && enemy_distance < radius + user->radius){
     enemy_live = false;
+    user->remove_life();
     return;
   }
 
-  //Checa se os inimigos colidem entre si, se colidirem, a posição volta a ser a anterior.
-  for(int i = 0; i < MyEnemies.size(); i++){
-    enemy_distance = sqrt(pow(enemy_pos_x - MyEnemies[i].enemy_pos_x, 2)
-        + pow(enemy_pos_y - MyEnemies[i].enemy_pos_y, 2));
-
-    if(enemy_distance < radius + MyEnemies[i].radius && id != MyEnemies[i].id){
-      enemy_pos_x -= enemy_vel_x;
-      enemy_pos_y -= enemy_vel_y;
-      return;
-    }
-  }
 }
 
 void Enemy::draw_enemy(){

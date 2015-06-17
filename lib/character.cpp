@@ -1,8 +1,8 @@
 #include "character.h"
 
 Character::Character(){
-  pos_x = 10;
-  pos_y = 10;
+  pos_x = WIDTH / 2;
+  pos_y = HEIGHT / 2;
   vel_x = 0;
   vel_y = 0;
   angle = 0;
@@ -10,7 +10,10 @@ Character::Character(){
   max_speed = 0.4;
   max_speed_neg = -0.4;
   radius = 16;
-  chrct = al_load_bitmap("img/player.png");
+  sprite = al_load_bitmap("img/player.png");
+  lives = 10;
+  alive = true;
+  score = 0;
 }
 
 void Character::set_character_speed(float x, float y){
@@ -44,5 +47,12 @@ void Character::set_character_position(){
 }
 
 void Character::draw_character(){
-  al_draw_rotated_bitmap(chrct, radius, radius, pos_x, pos_y, angle, 0);
+  al_draw_rotated_bitmap(sprite, radius, radius, pos_x, pos_y, angle, 0);
+}
+
+void Character::remove_life(){
+  this->lives--;
+  if(this->lives <= 0){
+    this->alive = false;
+  }
 }
