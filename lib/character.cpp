@@ -12,6 +12,7 @@ Character::Character(){
   radius = 16;
   sprite = al_load_bitmap("img/player.png");
   lives = 10;
+  alive = true;
 }
 
 void Character::set_character_speed(float x, float y){
