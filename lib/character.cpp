@@ -1,8 +1,8 @@
 #include "character.h"
 
 Character::Character(){
-  pos_x = 10;
-  pos_y = 10;
+  pos_x = WIDTH / 2;
+  pos_y = HEIGHT / 2;
   vel_x = 0;
   vel_y = 0;
   angle = 0;
