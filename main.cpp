@@ -155,6 +155,11 @@ int main(int argc, char *argv[]) {
 
     }else if(!player->alive){
       al_draw_textf(font40, yellow, WIDTH / 2, HEIGHT / 2, 0, "GAME OVER");
+      if (event.type == ALLEGRO_EVENT_KEY_DOWN && event.keyboard.keycode == ALLEGRO_KEY_ESCAPE){
+        player->alive = true;
+        player->lives = 10;
+        player->score = 0;
+      }
     }else{
       al_draw_bitmap(menu, 0, 0, 0);
       if (event.type == ALLEGRO_EVENT_KEY_DOWN && event.keyboard.keycode == ALLEGRO_KEY_ENTER){
